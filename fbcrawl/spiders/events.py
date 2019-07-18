@@ -41,7 +41,7 @@ class EventsSpider(FacebookSpider):
         EVENT_WHERE='/html/body/div/div/div[2]/div/table/tbody/tr/td/div[3]/div/div[2]/table/tbody/tr/td[2]/dt/div/text()'
         EVENT_LOCATION='/html/body/div/div/div[2]/div/table/tbody/tr/td/div[3]/div/div[2]/table/tbody/tr/td[2]/dd/div/text()'
         DATE='/html/body/div/div/div[2]/div/table/tbody/tr/td/div[3]/div/div[1]/table/tbody/tr/td[2]/dt/div/text()'
-        EVENT_DESCRIPTION='/html/body/div/div/div[2]/div/table/tbody/tr/td/table/tbody/tr/td/div[2]/div[2]/div[2]/div[2]/text()'
+        EVENT_DESCRIPTION='/html/body/div/div/div[2]/div/table/tbody/tr/td/table/tbody/tr/td/div[2]/div[2]/div[2]/div[2]'
         EVENT_COVER='/html/body/div/div/div[2]/div/table/tbody/tr/td/div[2]/div[1]/a/img/@src'
         GOING='/html/body/div/div/div[2]/div/table/tbody/tr/td/table/tbody/tr/td/div[2]/div[2]/div/div/div/div[2]/a/text()'
         INTERESTED='/html/body/div/div/div[2]/div/table/tbody/tr/td/table/tbody/tr/td/div[2]/div[2]/div/div/div[2]/div[2]/a/text()'
@@ -58,7 +58,7 @@ class EventsSpider(FacebookSpider):
             photo=response.xpath(EVENT_COVER).extract_first(),
             start_date=start_date,
             end_date=end_date,
-            description=response.xpath(EVENT_DESCRIPTION).extract_first(),
+            description=response.xpath(EVENT_DESCRIPTION).extract(),
             going=response.xpath(GOING).extract_first(),
             interested=response.xpath(INTERESTED).extract_first(),
             shared=response.xpath(SHARED).extract_first()
